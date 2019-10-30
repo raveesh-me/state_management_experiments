@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:state_management_experiments/screens/set_state_experiment_screen.dart';
 
 main() {
   runApp(MyApp());
@@ -12,9 +13,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.teal,
       ),
-      initialRoute: '/',
+      initialRoute: '/set_state_experiment_screen',
       routes: {
         '/': (_) => HomeScreen(),
+        '/set_state_experiment_screen': (_) => SetStateExperimentScreen(),
       },
     );
   }
@@ -33,7 +35,7 @@ class HomeScreen extends StatelessWidget {
         children: <Widget>[
           HomeScreenSelectionButton(
             buttonLabel: '00. setState ',
-            pushRouteName: '/setState',
+            pushRouteName: '/set_state_experiment_screen',
           ),
           HomeScreenSelectionButton(
             buttonLabel: '00. setState ',
