@@ -1,6 +1,6 @@
 import 'dart:async';
 
-enum StreamStates { wait, bounce, sad }
+enum StreamStates { wait, dash, sad }
 
 class StreamSorcery {
   StreamController _controller = StreamController.broadcast();
@@ -10,8 +10,8 @@ class StreamSorcery {
     _controller.sink.add(StreamStates.wait);
   }
 
-  bounce() {
-    _controller.sink.add(StreamStates.bounce);
+  dash() {
+    _controller.sink.add(StreamStates.dash);
   }
 
   sad() {
@@ -29,7 +29,7 @@ class StreamSorcery {
         return '$i is a number';
       });
     });
-    bounce();
+    dash();
     await Future.delayed(Duration(seconds: 1), () {});
     _controller.sink.add(result);
   }

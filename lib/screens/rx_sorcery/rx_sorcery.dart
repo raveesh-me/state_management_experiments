@@ -2,26 +2,26 @@ import 'dart:async';
 
 import 'package:rxdart/rxdart.dart';
 
-enum RxStates { wait, bounce, sad }
+enum RxStates { wait, dash, sad }
 
 class RxSorcery {
   BehaviorSubject _subject = BehaviorSubject();
   Stream get listenStream => _subject.stream;
 
   wait() {
-    _subject.sink.add(RxStates.wait);
+    _subject.add(RxStates.wait);
   }
 
-  bounce() {
-    _subject.sink.add(RxStates.bounce);
+  dash() {
+    _subject.add(RxStates.dash);
   }
 
   sad() {
-    _subject.sink.add(RxStates.sad);
+    _subject.add(RxStates.sad);
   }
 
   dispose() {
-    _subject.close();
+//    _subject.close();
   }
 
   download() async {
@@ -31,8 +31,8 @@ class RxSorcery {
         return '$i is a number';
       });
     });
-    bounce();
+    dash();
     await Future.delayed(Duration(seconds: 1), () {});
-    _subject.sink.add(result);
+    _subject.add(result);
   }
 }

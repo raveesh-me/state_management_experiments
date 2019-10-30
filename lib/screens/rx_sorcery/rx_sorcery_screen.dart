@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:state_management_experiments/screens/stream_sorcery/stream_sorcery.dart';
+import 'package:state_management_experiments/screens/rx_sorcery/rx_sorcery.dart';
+
+import 'dash.dart';
 
 class RxSorceryScreen extends StatefulWidget {
   @override
@@ -7,100 +9,96 @@ class RxSorceryScreen extends StatefulWidget {
 }
 
 class _RxSorceryScreenState extends State<RxSorceryScreen> {
-  StreamSorcery streamSorcery;
+  RxSorcery rxSorcery;
 
   @override
   void initState() {
     super.initState();
-    streamSorcery = StreamSorcery();
+    rxSorcery = RxSorcery();
   }
 
   @override
   void dispose() {
     super.dispose();
-    streamSorcery.dispose(); // dispose them right, prevent stream leaks
+    rxSorcery.dispose(); // dispose them right, prevent stream leaks
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Stream Sorcery'),
+        title: Text('Rx Sorcery'),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Expanded(
-              child: Center(
-                child: StreamBuilder(
-                  stream: streamSorcery.listenStream,
-                  builder: (context, AsyncSnapshot snapshot) {
-                    // return what you do when there is no data
-                    if (!snapshot.hasData)
-                      return MagnifiedText("Snapshot does not have data");
+              child: StreamBuilder(
+                stream: rxSorcery.listenStream,
+                builder: (context, AsyncSnapshot snapshot) {
+                  // return what you do when there is no data
+                  if (!snapshot.hasData)
+                    return MagnifiedText("Snapshot does not have data");
 
-                    // if data, check its state
-                    final data = snapshot.data;
-                    switch (data) {
-                      case StreamStates.wait:
-                        return LinearProgressIndicator(
-                          backgroundColor: Colors.red,
-                        );
-                        break;
-                      case StreamStates.bounce:
-                        return Center(
-                          child: MagnifiedText("Dash Bounces"),
-                        );
-                        break;
-                      case StreamStates.sad:
-                        return MagnifiedText("Builder really sad");
-                        break;
-                      default:
-                        break;
-                    }
-
-                    // finally if  data is a List
-                    if (data is List)
-                      return ListView.builder(
-                        itemBuilder: (_, i) => ListTile(
-                          title: Text(
-                            data[i].toString(),
-                            textScaleFactor: 1.4,
-                          ),
-                        ),
-                        itemCount: (data).length,
+                  // if data, check its state
+                  final data = snapshot.data;
+                  switch (data) {
+                    case RxStates.wait:
+                      return LinearProgressIndicator(
+                        backgroundColor: Colors.red,
                       );
+                      break;
+                    case RxStates.dash:
+                      return Dash();
+                      break;
+                    case RxStates.sad:
+                      return MagnifiedText("Builder really sad");
+                      break;
+                    default:
+                      break;
+                  }
 
-                    // if you can not understand anything
-                    return Text("Doing something else altogether");
-                  },
-                ),
+                  // finally if  data is a List
+                  if (data is List)
+                    return ListView.builder(
+                      itemBuilder: (_, i) => ListTile(
+                        title: Text(
+                          data[i].toString(),
+                          textScaleFactor: 1.4,
+                        ),
+                      ),
+                      itemCount: (data).length,
+                    );
+
+                  // if you can not understand anything
+                  return Text("Doing something else altogether");
+                },
               ),
             ),
             RaisedButton(
-              onPressed: () => streamSorcery.wait(),
+              onPressed: () => rxSorcery.wait(),
               child: Text(
                 "Wait",
                 textScaleFactor: 1.4,
               ),
             ),
             RaisedButton(
-              onPressed: () => streamSorcery.bounce(),
+              onPressed: () => rxSorcery.dash(),
               child: Text(
-                "Bounce",
+                "Dash!",
                 textScaleFactor: 1.4,
               ),
             ),
             RaisedButton(
-              onPressed: () => streamSorcery.sad(),
+              onPressed: () => rxSorcery.sad(),
               child: Text(
                 "Sad",
                 textScaleFactor: 1.4,
               ),
             ),
             RaisedButton(
-              onPressed: () => streamSorcery.download(),
+              onPressed: () => rxSorcery.download(),
               child: Text(
                 "Download",
                 textScaleFactor: 1.4,

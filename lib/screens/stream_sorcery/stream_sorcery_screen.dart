@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:state_management_experiments/screens/rx_sorcery/dash.dart';
 import 'package:state_management_experiments/screens/stream_sorcery/stream_sorcery.dart';
 
 class StreamSorceryScreen extends StatefulWidget {
@@ -48,9 +49,9 @@ class _StreamSorceryScreenState extends State<StreamSorceryScreen> {
                           backgroundColor: Colors.red,
                         );
                         break;
-                      case StreamStates.bounce:
+                      case StreamStates.dash:
                         return Center(
-                          child: MagnifiedText("Dash Bounces"),
+                          child: Dash(),
                         );
                         break;
                       case StreamStates.sad:
@@ -86,9 +87,9 @@ class _StreamSorceryScreenState extends State<StreamSorceryScreen> {
               ),
             ),
             RaisedButton(
-              onPressed: () => streamSorcery.bounce(),
+              onPressed: () => streamSorcery.dash(),
               child: Text(
-                "Bounce",
+                "Dash",
                 textScaleFactor: 1.4,
               ),
             ),
