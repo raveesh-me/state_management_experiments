@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.teal,
       ),
-      initialRoute: '/',
+      initialRoute: '/set_state_experiment_screen',
       routes: {
         '/': (_) => HomeScreen(),
         '/set_state_experiment_screen': (_) => SetStateExperimentScreen(),
