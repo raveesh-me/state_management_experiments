@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:state_management_experiments/screens/inherited_widget_demo/iwd_stateful_widget_screen.dart';
 import 'package:state_management_experiments/screens/parental_love_screen.dart';
 import 'package:state_management_experiments/screens/set_state_experiment_screen.dart';
 
@@ -14,11 +15,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.teal,
       ),
-      initialRoute: '/parental_love_screen',
+      initialRoute: '/iwd_stateful_screen',
       routes: {
         '/': (_) => HomeScreen(),
         '/set_state_experiment_screen': (_) => SetStateExperimentScreen(),
         '/parental_love_screen': (_) => ParentalLoveScreen(),
+        '/iwd_stateful_screen': (_) => IWDStatefulScreen(),
       },
     );
   }
@@ -43,10 +45,10 @@ class HomeScreen extends StatelessWidget {
             buttonLabel: '01. parental love',
             pushRouteName: '/parental_love_screen',
           ),
-//          HomeScreenSelectionButton(
-//            buttonLabel: '00. setState ',
-//            pushRouteName: '/setState',
-//          ),
+          HomeScreenSelectionButton(
+            buttonLabel: '02. Inherited Colors ',
+            pushRouteName: '/iwd_stateful_screen',
+          ),
 //          HomeScreenSelectionButton(
 //            buttonLabel: '00. setState ',
 //            pushRouteName: '/setState',
