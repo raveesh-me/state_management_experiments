@@ -3,13 +3,14 @@ import 'package:flutter/material.dart';
 // the inherited widget that passes it down the tree
 class BirdColor extends InheritedWidget {
   final String color;
+  final Function(String newColor) changeColor;
 
-  const BirdColor({
+  const BirdColor( {
     Key key,
-    @required String color,
+    @required this.color,
+    @required this.changeColor,
     @required Widget child,
   })  : assert(child != null),
-        color = color,
         super(key: key, child: child);
 
   static String of(BuildContext context) {

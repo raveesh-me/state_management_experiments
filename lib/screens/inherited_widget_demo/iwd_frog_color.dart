@@ -6,10 +6,9 @@ class FrogColor extends InheritedWidget {
 
   const FrogColor({
     Key key,
-    @required String color,
+    @required this.color,
     @required Widget child,
   })  : assert(child != null),
-        color = color,
         super(key: key, child: child);
 
   static FrogColor of(BuildContext context) {
