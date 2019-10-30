@@ -13,6 +13,11 @@ class _IWDStatefulScreenState extends State<IWDStatefulScreen> {
   String frogColor = 'green';
   String birdColor = 'canary';
 
+  changeFrogColor(String newColor) {
+    frogColor = newColor;
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,6 +28,7 @@ class _IWDStatefulScreenState extends State<IWDStatefulScreen> {
         color: birdColor,
         child: FrogColor(
           color: frogColor,
+          changeColor: changeFrogColor,
           child: IWDChildTree(),
         ),
       ),

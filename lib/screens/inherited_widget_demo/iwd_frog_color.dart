@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 // the inherited widget that passes it down the tree
 class FrogColor extends InheritedWidget {
   final String color;
+  final Function(String newColor) changeColor;
 
   const FrogColor({
     Key key,
+    @required this.changeColor,
     @required this.color,
     @required Widget child,
   })  : assert(child != null),

@@ -41,6 +41,13 @@ class IWDChildTree extends StatelessWidget {
               'Bird Color',
               textScaleFactor: 1.4,
             ),
+          ),
+          RaisedButton(
+            onPressed: () => FrogColor.of(context).changeColor('red'),
+            child: Text(
+              'Change Frog To Red',
+              textScaleFactor: 1.4,
+            ),
           )
         ],
       ),
