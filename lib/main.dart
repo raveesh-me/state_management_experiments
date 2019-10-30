@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:state_management_experiments/screens/inherited_widget_demo/iwd_stateful_widget_screen.dart';
 import 'package:state_management_experiments/screens/parental_love_screen.dart';
 import 'package:state_management_experiments/screens/set_state_experiment_screen.dart';
+import 'package:state_management_experiments/screens/stream_sorcery/stream_sorcery_screen.dart';
 
 main() {
   runApp(MyApp());
@@ -15,12 +16,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.teal,
       ),
-      initialRoute: '/iwd_stateful_screen',
+      initialRoute: '/stream_sorcery_screen',
       routes: {
         '/': (_) => HomeScreen(),
         '/set_state_experiment_screen': (_) => SetStateExperimentScreen(),
         '/parental_love_screen': (_) => ParentalLoveScreen(),
         '/iwd_stateful_screen': (_) => IWDStatefulScreen(),
+        '/stream_sorcery_screen': (_) => StreamSorceryScreen(),
       },
     );
   }
@@ -49,10 +51,10 @@ class HomeScreen extends StatelessWidget {
             buttonLabel: '02. Inherited Colors ',
             pushRouteName: '/iwd_stateful_screen',
           ),
-//          HomeScreenSelectionButton(
-//            buttonLabel: '00. setState ',
-//            pushRouteName: '/setState',
-//          ),
+          HomeScreenSelectionButton(
+            buttonLabel: '03. Stream Sorcery ',
+            pushRouteName: '/stream_sorcery_screen',
+          ),
 //          HomeScreenSelectionButton(
 //            buttonLabel: '00. setState ',
 //            pushRouteName: '/setState',
