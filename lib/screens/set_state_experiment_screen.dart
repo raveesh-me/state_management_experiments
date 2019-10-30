@@ -46,7 +46,10 @@ class _SetStateExperimentScreenState extends State<SetStateExperimentScreen> {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
-                  Text('counter:'),
+                  Text(
+                    'counter:',
+                    textScaleFactor: 1.5,
+                  ),
                   Text(
                     '$counter',
                     textAlign: TextAlign.center,
