@@ -6,7 +6,6 @@ class ParentalLoveScreen extends StatefulWidget {
   _ParentalLoveScreenState createState() => _ParentalLoveScreenState();
 }
 
-// the stateful widget that maintains colors
 class _ParentalLoveScreenState extends State<ParentalLoveScreen> {
   showLove(BuildContext context) {
     Scaffold.of(context).showSnackBar(
