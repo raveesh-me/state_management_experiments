@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:state_management_experiments/screens/parental_love_screen.dart';
 import 'package:state_management_experiments/screens/set_state_experiment_screen.dart';
 
 main() {
@@ -13,10 +14,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.teal,
       ),
-      initialRoute: '/set_state_experiment_screen',
+      initialRoute: '/parental_love_screen',
       routes: {
         '/': (_) => HomeScreen(),
         '/set_state_experiment_screen': (_) => SetStateExperimentScreen(),
+        '/parental_love_screen': (_) => ParentalLoveScreen(),
       },
     );
   }
@@ -38,61 +40,61 @@ class HomeScreen extends StatelessWidget {
             pushRouteName: '/set_state_experiment_screen',
           ),
           HomeScreenSelectionButton(
-            buttonLabel: '00. setState ',
-            pushRouteName: '/setState',
+            buttonLabel: '01. parental love',
+            pushRouteName: '/parental_love_screen',
           ),
-          HomeScreenSelectionButton(
-            buttonLabel: '00. setState ',
-            pushRouteName: '/setState',
-          ),
-          HomeScreenSelectionButton(
-            buttonLabel: '00. setState ',
-            pushRouteName: '/setState',
-          ),
-          HomeScreenSelectionButton(
-            buttonLabel: '00. setState ',
-            pushRouteName: '/setState',
-          ),
-          HomeScreenSelectionButton(
-            buttonLabel: '00. setState ',
-            pushRouteName: '/setState',
-          ),
-          HomeScreenSelectionButton(
-            buttonLabel: '00. setState ',
-            pushRouteName: '/setState',
-          ),
-          HomeScreenSelectionButton(
-            buttonLabel: '00. setState ',
-            pushRouteName: '/setState',
-          ),
-          HomeScreenSelectionButton(
-            buttonLabel: '00. setState ',
-            pushRouteName: '/setState',
-          ),
-          HomeScreenSelectionButton(
-            buttonLabel: '00. setState ',
-            pushRouteName: '/setState',
-          ),
-          HomeScreenSelectionButton(
-            buttonLabel: '00. setState ',
-            pushRouteName: '/setState',
-          ),
-          HomeScreenSelectionButton(
-            buttonLabel: '00. setState ',
-            pushRouteName: '/setState',
-          ),
-          HomeScreenSelectionButton(
-            buttonLabel: '00. setState ',
-            pushRouteName: '/setState',
-          ),
-          HomeScreenSelectionButton(
-            buttonLabel: '00. setState ',
-            pushRouteName: '/setState',
-          ),
-          HomeScreenSelectionButton(
-            buttonLabel: '00. setState ',
-            pushRouteName: '/setState',
-          ),
+//          HomeScreenSelectionButton(
+//            buttonLabel: '00. setState ',
+//            pushRouteName: '/setState',
+//          ),
+//          HomeScreenSelectionButton(
+//            buttonLabel: '00. setState ',
+//            pushRouteName: '/setState',
+//          ),
+//          HomeScreenSelectionButton(
+//            buttonLabel: '00. setState ',
+//            pushRouteName: '/setState',
+//          ),
+//          HomeScreenSelectionButton(
+//            buttonLabel: '00. setState ',
+//            pushRouteName: '/setState',
+//          ),
+//          HomeScreenSelectionButton(
+//            buttonLabel: '00. setState ',
+//            pushRouteName: '/setState',
+//          ),
+//          HomeScreenSelectionButton(
+//            buttonLabel: '00. setState ',
+//            pushRouteName: '/setState',
+//          ),
+//          HomeScreenSelectionButton(
+//            buttonLabel: '00. setState ',
+//            pushRouteName: '/setState',
+//          ),
+//          HomeScreenSelectionButton(
+//            buttonLabel: '00. setState ',
+//            pushRouteName: '/setState',
+//          ),
+//          HomeScreenSelectionButton(
+//            buttonLabel: '00. setState ',
+//            pushRouteName: '/setState',
+//          ),
+//          HomeScreenSelectionButton(
+//            buttonLabel: '00. setState ',
+//            pushRouteName: '/setState',
+//          ),
+//          HomeScreenSelectionButton(
+//            buttonLabel: '00. setState ',
+//            pushRouteName: '/setState',
+//          ),
+//          HomeScreenSelectionButton(
+//            buttonLabel: '00. setState ',
+//            pushRouteName: '/setState',
+//          ),
+//          HomeScreenSelectionButton(
+//            buttonLabel: '00. setState ',
+//            pushRouteName: '/setState',
+//          ),
         ],
       ),
     );
