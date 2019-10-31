@@ -61,10 +61,10 @@ class HomeScreen extends StatelessWidget {
             buttonLabel: '04. Rx Sorcery ',
             pushRouteName: '/rx_sorcery_screen',
           ),
-//          HomeScreenSelectionButton(
-//            buttonLabel: '00. setState ',
-//            pushRouteName: '/setState',
-//          ),
+          HomeScreenSelectionButton(
+            buttonLabel: '05. ChangeNotifier ',
+            pushRouteName: '/change_notifier_screen',
+          ),
 //          HomeScreenSelectionButton(
 //            buttonLabel: '00. setState ',
 //            pushRouteName: '/setState',

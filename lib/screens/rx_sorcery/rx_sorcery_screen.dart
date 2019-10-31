@@ -104,6 +104,23 @@ class _RxSorceryScreenState extends State<RxSorceryScreen> {
                 textScaleFactor: 1.4,
               ),
             ),
+            Builder(
+              builder: (newContext) => RaisedButton(
+                onPressed: () async {
+                  try {
+                    var result = await rxSorcery.listenStream.first;
+                    Scaffold.of(newContext).showSnackBar(
+                        SnackBar(content: Text(result.toString())));
+                  } catch (e) {
+                    print(e);
+                  }
+                },
+                child: Text(
+                  "Fetch Latest",
+                  textScaleFactor: 1.4,
+                ),
+              ),
+            ),
           ],
         ),
       ),

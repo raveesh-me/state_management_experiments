@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:state_management_experiments/screens/rx_sorcery/dash.dart';
 import 'package:state_management_experiments/screens/stream_sorcery/stream_sorcery.dart';
 
@@ -105,6 +106,21 @@ class _StreamSorceryScreenState extends State<StreamSorceryScreen> {
               child: Text(
                 "Download",
                 textScaleFactor: 1.4,
+              ),
+            ),
+            Builder(
+              builder: (newContext) => RaisedButton(
+                onPressed: () async {
+                  print('Hi');
+                  var result = await streamSorcery.listenStream.first == null;
+                  print('result' + result.toString());
+                  Scaffold.of(context)
+                      .showSnackBar(SnackBar(content: Text(result.toString())));
+                },
+                child: Text(
+                  "Fetch Latest",
+                  textScaleFactor: 1.4,
+                ),
               ),
             ),
           ],
