@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:state_management_experiments/screens/change_notifier/change_notifier_screen.dart';
 import 'package:state_management_experiments/screens/inherited_widget_demo/iwd_stateful_widget_screen.dart';
 import 'package:state_management_experiments/screens/parental_love_screen.dart';
 import 'package:state_management_experiments/screens/rx_sorcery/rx_sorcery_screen.dart';
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.teal,
       ),
-      initialRoute: '/rx_sorcery_screen',
+      initialRoute: '/change_notifier_screen',
       routes: {
         '/': (_) => HomeScreen(),
         '/set_state_experiment_screen': (_) => SetStateExperimentScreen(),
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
         '/iwd_stateful_screen': (_) => IWDStatefulScreen(),
         '/stream_sorcery_screen': (_) => StreamSorceryScreen(),
         '/rx_sorcery_screen': (_) => RxSorceryScreen(),
+        '/change_notifier_screen': (_) => ChangeNotifierScreen(),
       },
     );
   }
