@@ -7,10 +7,8 @@ class IsEvenWidget extends StatefulWidget {
 }
 
 class _IsEvenWidgetState extends State<IsEvenWidget> {
-  refresh(){
-    setState(() {
-
-    });
+  refresh() {
+    setState(() {});
   }
 
   @override
