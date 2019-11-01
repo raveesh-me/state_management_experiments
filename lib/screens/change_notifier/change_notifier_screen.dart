@@ -21,13 +21,10 @@ class ChangeNotifierScreen extends StatelessWidget {
       ),
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
-            Expanded(
-              child: CounterWidget(),
-            ),
-            Expanded(
-              child: IsEvenWidget(),
-            ),
+            CounterWidget(),
+            IsEvenWidget(),
           ],
         ),
       ),

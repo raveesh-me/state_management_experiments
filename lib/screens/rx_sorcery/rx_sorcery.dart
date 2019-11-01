@@ -21,7 +21,7 @@ class RxSorcery {
   }
 
   dispose() {
-//    _subject.close();
+    _subject.close();
   }
 
   download() async {

@@ -25,6 +25,9 @@ class _CounterWidgetState extends State<CounterWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Text('${Counter().count}');
+    return Text(
+      '${Counter().count}',
+      textScaleFactor: 3,
+    );
   }
 }

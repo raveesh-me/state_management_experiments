@@ -25,6 +25,9 @@ class _IsEvenWidgetState extends State<IsEvenWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Text(
+      'isEven -> ${Counter().count % 2 == 0}',
+      textScaleFactor: 3,
+    );
   }
 }
