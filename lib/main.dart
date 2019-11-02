@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.teal,
       ),
-      initialRoute: '/change_notifier_screen',
+      initialRoute: '/',
       routes: {
         '/': (_) => HomeScreen(),
         '/set_state_experiment_screen': (_) => SetStateExperimentScreen(),
@@ -67,42 +67,6 @@ class HomeScreen extends StatelessWidget {
             buttonLabel: '05. ChangeNotifier ',
             pushRouteName: '/change_notifier_screen',
           ),
-//          HomeScreenSelectionButton(
-//            buttonLabel: '00. setState ',
-//            pushRouteName: '/setState',
-//          ),
-//          HomeScreenSelectionButton(
-//            buttonLabel: '00. setState ',
-//            pushRouteName: '/setState',
-//          ),
-//          HomeScreenSelectionButton(
-//            buttonLabel: '00. setState ',
-//            pushRouteName: '/setState',
-//          ),
-//          HomeScreenSelectionButton(
-//            buttonLabel: '00. setState ',
-//            pushRouteName: '/setState',
-//          ),
-//          HomeScreenSelectionButton(
-//            buttonLabel: '00. setState ',
-//            pushRouteName: '/setState',
-//          ),
-//          HomeScreenSelectionButton(
-//            buttonLabel: '00. setState ',
-//            pushRouteName: '/setState',
-//          ),
-//          HomeScreenSelectionButton(
-//            buttonLabel: '00. setState ',
-//            pushRouteName: '/setState',
-//          ),
-//          HomeScreenSelectionButton(
-//            buttonLabel: '00. setState ',
-//            pushRouteName: '/setState',
-//          ),
-//          HomeScreenSelectionButton(
-//            buttonLabel: '00. setState ',
-//            pushRouteName: '/setState',
-//          ),
         ],
       ),
     );
@@ -119,6 +83,7 @@ class HomeScreenSelectionButton extends StatelessWidget {
     @required this.pushRouteName,
     @required this.buttonLabel,
   }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Padding(

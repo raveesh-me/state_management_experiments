@@ -1,11 +1,16 @@
 import 'dart:async';
 
+import 'package:flutter/material.dart';
 import 'package:rxdart/rxdart.dart';
 
 enum RxStates { wait, dash, sad }
 
+typedef CtxFunction(BuildContext context);
+typedef Future<int> ShowDialogForNumberOfSecondsCallback();
+
 class RxSorcery {
   BehaviorSubject _subject = BehaviorSubject();
+
   Stream get listenStream => _subject.stream;
 
   wait() {
@@ -24,9 +29,24 @@ class RxSorcery {
     _subject.close();
   }
 
-  download() async {
+  snackbar() async {
+    final temp = await _subject.first;
+    print('the last from subject is $temp');
+    _subject.add((BuildContext context) {
+      Scaffold.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Hi'),
+        ),
+      );
+    });
+    await Future.delayed(Duration(milliseconds: 9));
+    _subject.add(temp);
+  }
+
+  download({@required ShowDialogForNumberOfSecondsCallback showDialogCallback}) async {
+    int numberOfSeconds = await showDialogCallback();
     wait();
-    var result = await Future.delayed(Duration(seconds: 2), () {
+    var result = await Future.delayed(Duration(seconds: numberOfSeconds), () {
       return List.generate(20, (i) {
         return '$i is a number';
       });

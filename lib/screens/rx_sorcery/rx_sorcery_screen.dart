@@ -34,46 +34,53 @@ class _RxSorceryScreenState extends State<RxSorceryScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Expanded(
-              child: StreamBuilder(
-                stream: rxSorcery.listenStream,
-                builder: (context, AsyncSnapshot snapshot) {
-                  // return what you do when there is no data
-                  if (!snapshot.hasData)
-                    return MagnifiedText("Snapshot does not have data");
+              child: Center(
+                child: StreamBuilder(
+                  stream: rxSorcery.listenStream,
+                  builder: (context, AsyncSnapshot snapshot) {
+                    // return what you do when there is no data
+                    if (!snapshot.hasData)
+                      return MagnifiedText("Snapshot does not have data");
 
-                  // if data, check its state
-                  final data = snapshot.data;
-                  switch (data) {
-                    case RxStates.wait:
-                      return LinearProgressIndicator(
-                        backgroundColor: Colors.red,
-                      );
-                      break;
-                    case RxStates.dash:
-                      return Dash();
-                      break;
-                    case RxStates.sad:
-                      return MagnifiedText("Builder really sad");
-                      break;
-                    default:
-                      break;
-                  }
+                    // if data, check its state
+                    final data = snapshot.data;
+                    switch (data) {
+                      case RxStates.wait:
+                        return LinearProgressIndicator(
+                          backgroundColor: Colors.red,
+                        );
+                        break;
+                      case RxStates.dash:
+                        return Dash();
+                        break;
+                      case RxStates.sad:
+                        return MagnifiedText("Builder really sad");
+                        break;
+                      default:
+                        break;
+                    }
 
-                  // finally if  data is a List
-                  if (data is List)
-                    return ListView.builder(
-                      itemBuilder: (_, i) => ListTile(
-                        title: Text(
-                          data[i].toString(),
-                          textScaleFactor: 1.4,
+                    // finally if  data is a List
+                    if (data is List)
+                      return ListView.builder(
+                        itemBuilder: (_, i) => ListTile(
+                          title: Text(
+                            data[i].toString(),
+                            textScaleFactor: 1.4,
+                          ),
                         ),
-                      ),
-                      itemCount: (data).length,
-                    );
+                        itemCount: (data).length,
+                      );
 
-                  // if you can not understand anything
-                  return Text("Doing something else altogether");
-                },
+                    if (data is CtxFunction) {
+                      print('Data is a CTXFunction');
+                      data(context);
+                    }
+
+                    // if you can not understand anything
+                    return Text("Doing something else altogether");
+                  },
+                ),
               ),
             ),
             RaisedButton(
@@ -98,9 +105,47 @@ class _RxSorceryScreenState extends State<RxSorceryScreen> {
               ),
             ),
             RaisedButton(
-              onPressed: () => rxSorcery.download(),
+              onPressed: () => rxSorcery.download(
+                showDialogCallback: () async {
+                  final seconds = await showDialog(
+                      context: context,
+                      builder: (context) {
+                        TextEditingController _controller =
+                            TextEditingController();
+                        return SimpleDialog(
+                          title: Text('Enter number of seconds'),
+                          children: <Widget>[
+                            TextField(
+                              keyboardType: TextInputType.number,
+                              controller: _controller,
+                            ),
+                            FlatButton(
+                              onPressed: () {
+                                Navigator.pop(
+                                  context,
+                                  int.parse(_controller.text),
+                                );
+                              },
+                              child: Text(
+                                'DONE',
+                                textScaleFactor: 2,
+                              ),
+                            ),
+                          ],
+                        );
+                      });
+                  return seconds;
+                },
+              ),
               child: Text(
                 "Download",
+                textScaleFactor: 1.4,
+              ),
+            ),
+            RaisedButton(
+              onPressed: () => rxSorcery.snackbar(),
+              child: Text(
+                "Snackbar",
                 textScaleFactor: 1.4,
               ),
             ),
@@ -135,6 +180,7 @@ class MagnifiedText extends StatelessWidget {
     this.text, {
     Key key,
   }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Text(
